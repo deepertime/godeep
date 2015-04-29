@@ -47,7 +47,7 @@ var videoEmbed = {
            var html = html.replace(pattern1, replacement);
         }                   
         if(pattern2.test(html)){
-              var replacement = '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
+              var replacement = '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" autoplay="1" frameborder="0" allowfullscreen></iframe>';
               var html = html.replace(pattern2, replacement);
         }                 
         if(pattern3.test(html)){
