@@ -34,8 +34,7 @@ var videoEmbed = {
     invoke: function(){        
         $("#stats").html(function(i, html) {
             return videoEmbed.convertMedia(html);
-        });
-        
+        });        
     },
     convertMedia: function(html){
         var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?(.+)/g;
