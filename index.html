@@ -1,9 +1,22 @@
 <html>
 <head>
+<script src="godeep/jquery-2.1.3.js"></script>
 </head>
 <body>
-	<audio autoplay="autoplay" loop="loop" play="true">
+	<audio autoplay="autoplay" loop="loop">
 	  <source src="godeep/sarabande.mp3" type="audio/mpeg">
 	</audio>
-<iframe width="854" height="510" src="https://www.youtube.com/embed/cmPv5ug8NZw" frameborder="0" allowfullscreen></iframe>
+
+<div><table>
+<tr><td>URL:</td> <td><input type="text" id="video" maxlength="50" size="20"/></td>
+<td><button id="deeper">go deeper</button></td></tr>    
+</table></div>
+<script>
+
+$("#deeper").click(function(){
+		
+		$("#music")[0].play();
+    })
+</script>
+	<iframe width="854" height="510" src="https://www.youtube.com/embed/cmPv5ug8NZw" frameborder="0" allowfullscreen></iframe>
 </body>
