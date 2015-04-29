@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>			 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <style>
 #player{
@@ -106,46 +106,59 @@ var videoEmbed = {
         var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?(.+)/g;
         var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
         var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
-//		var pattern4 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256})/i;
 			
         if(pattern1.test(html)){
            var replacement = '<iframe width="840" height="690" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
            
            var html = html.replace(pattern1, replacement);
-        }                   
-        if(pattern2.test(html)){
-              var replacement = '<iframe width="840" height="690" src="http://www.youtube.com/embed/$1?autoplay=1" frameborder="0" allowfullscreen></iframe>';
-              var html = html.replace(pattern2, replacement);
-        }                 
-        if(pattern3.test(html)){
-            var replacement = '<a href="$1" target="_blank"><img class="sml" src="$1" /></a><br />';
-            var html = html.replace(pattern3, replacement);
-        }     
-		/*
-		if(html){
-		    var url = 'http://gdata.youtube.com/feeds/api/videos?q=' + encodeURIComponent(html) + '&format=5&max-results=1&v=2&alt=jsonc';
-		    $.ajax({
-		        async: false,
-		        type: "GET",
-		        url: url,
-		        dataType: "jsonp",
-		        success: function (responseData, textStatus, XMLHttpRequest) {
-		            if (responseData.data.items) {
-		                var videos = responseData.data.items;
-		                var videoid = videos[0].id;
-		                //alert(videoid);
-		                //return videoid;
-		            }
-		        }
-		    });
-		    var replacement = '<iframe width="840" height="690" src="http://www.youtube.com/embed/$1?autoplay=1" frameborder="0" allowfullscreen></iframe>';
-		    var html = html.replace(videoid, replacement);			
-		}    
-		*/
+        }  
+		else {                 
+	        if(pattern2.test(html)){
+	              var replacement = '<iframe width="840" height="690" src="http://www.youtube.com/embed/$1?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+	              var html = html.replace(pattern2, replacement);
+	        }      
+			else{           
+		        if(pattern3.test(html)){
+		            var replacement = '<a href="$1" target="_blank"><img class="sml" src="$1" /></a><br />';
+		            var html = html.replace(pattern3, replacement);
+		        }  
+				else{
+					html = 'Please enter video link'
+/*
+					function grabid(keyword){
+					   var url = 'http://gdata.youtube.com/feeds/api/videos?q='+encodeURIComponent(keyword)+'&format=5&max-results=1&v=2&alt=jsonc';
+					  return $.ajax({
+					     type: "GET",
+					     url: url,
+					     dataType: "jsonp"       
+					    });   							
+					}
+
+					function getVideoId(key) {
+					  key.success(function(respdata) {
+					      var videos = respdata.data.items;
+					      var videoid = videos[0].id;	
+					//	  alert(videoid)						  
+					   });
+					  }	
+					  
+						var ids = grabid(html);											
+						alert(ids);
+						alert(getVideoId(ids));
+					    var html = html.replace(getVideoId(ids), '<iframe width="840" height="690" src="http://www.youtube.com/embed/$1?autoplay=1" frameborder="0" allowfullscreen></iframe>');																		    
+					*/
+					}
+				
+				}   
+			}		
+						
         return html;
     }
 }
 
+
+
+  
 </script>
 </body>
 </html>
