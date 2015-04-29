@@ -1,22 +1,29 @@
 <html>
 <head>
-<script src="godeep/jquery-2.1.3.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="godeep/jquery.fitvids.js"></script>
 </head>
 <body>
-	<audio loop="loop">
+	<audio id="music" loop="loop">
 	  <source src="godeep/sarabande.mp3" type="audio/mpeg">
 	</audio>
+<div>
+	<table>
+		<tr>
+			<td><input type="text" id="video" maxlength="50" size="20"/></td>
+			<td><button id="deeper">go deeper</button></td>
+		</tr>    
+	</table>
+</div>
+<div id="container">
+<iframe width="854" height="510" src="https://www.youtube.com/embed/cmPv5ug8NZw" frameborder="0" allowfullscreen></iframe>
+</div>
 
-<div><table>
-<tr><td>URL:</td> <td><input type="text" id="video" maxlength="50" size="20"/></td>
-<td><button id="deeper">go deeper</button></td></tr>    
-</table></div>
 <script>
 
-$("#deeper").click(function(){
-		
-		$("#music")[0].play();
-    })
+$("#deeper").click(function(){		
+		$("#music")[0].play();	
+		$("#container").fitVids($("#video").val());
+})
 </script>
-	<iframe width="854" height="510" src="https://www.youtube.com/embed/cmPv5ug8NZw" frameborder="0" allowfullscreen></iframe>
 </body>
