@@ -24,6 +24,7 @@
 $("#videot").val("dare to");
 $("#go").click(function(){
 	$("#stats").html($("#videot").val());	
+	videoEmbed.invoke();
 });
 $("#deeper").click(function(){		
 	$("#music")[0].play();
@@ -57,10 +58,6 @@ var videoEmbed = {
         return html;
     }
 }
-
-setTimeout(function(){
-    videoEmbed.invoke();
-},3000);
 
 </script>
 </body>
